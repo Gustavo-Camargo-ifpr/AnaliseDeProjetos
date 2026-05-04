@@ -1,0 +1,17 @@
+@startuml
+object Cliente
+object "Cadastro de Cliente" as Cadastro
+object "Componente de Negócio" as Negocio
+object "Banco de Dados" as BD
+
+Cliente -> Cadastro : 1. incluiDadosCadastrais()
+Cadastro -> Negocio : 2. validaSeClienteExiste()
+Negocio -> BD : 3. checaClienteNoBanco()
+
+BD --> Negocio : 4. clienteNaoExiste
+
+Negocio -> BD : 5. insereDadosCliente()
+Negocio --> Cadastro : 6. confirmacao
+
+Cadastro --> Cliente : 7. retorno
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+
+class Cliente {
+    -id: int
+    -nome: String
+    -cpf: String
+    +getDados()
+}
+
+class CadastroCliente {
+    +incluirDados(cliente: Cliente)
+}
+
+class ComponenteNegocio {
+    +validaSeClienteExiste(cliente: Cliente): boolean
+    +gravarCliente(cliente: Cliente)
+}
+
+class BancoDeDados {
+    +existeCliente(cliente: Cliente): boolean
+    +inserirCliente(cliente: Cliente)
+}
+
+CadastroCliente --> ComponenteNegocio
+ComponenteNegocio --> BancoDeDados
+ComponenteNegocio --> Cliente
+CadastroCliente --> Cliente
+
+@enduml
