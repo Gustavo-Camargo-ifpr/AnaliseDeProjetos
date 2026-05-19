@@ -1,0 +1,26 @@
+@startuml
+start
+
+:Inserir cartão;
+:Digitar senha;
+
+if (Senha válida?) then (Sim)
+  :Selecionar opção Saque;
+  :Informar valor;
+
+  if (Saldo suficiente?) then (Sim)
+    :Confirmar operação;
+    :Debitar valor da conta;
+    :Liberar dinheiro;
+    :Emitir comprovante;
+  else (Não)
+    :Exibir mensagem de saldo insuficiente;
+  endif
+
+else (Não)
+  :Exibir erro de senha;
+endif
+
+:Retirar cartão;
+stop
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+[*] --> Trancada
+
+Trancada --> Autenticando : Inserir credencial
+Autenticando --> Destrancada : Autenticação válida
+Autenticando --> Trancada : Autenticação inválida
+
+Destrancada --> Trancada : Tempo esgotado
+@enduml

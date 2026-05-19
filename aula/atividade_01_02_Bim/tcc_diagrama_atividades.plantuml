@@ -1,0 +1,52 @@
+@startuml
+start
+
+:Usuário aproxima RFID;
+:Sistema identifica usuário;
+
+:Solicitar senha;
+
+if (Usuário possui senha?) then (Sim)
+    :Usuário digita senha;
+
+    if (Senha válida?) then (Sim)
+        :Verificar permissão de acesso;
+
+        if (Possui permissão?) then (Sim)
+            :Liberar entrada;
+            :Destrancar tranca;
+        else (Não)
+            :Acesso negado;
+        endif
+
+    else (Não)
+        :Senha inválida;
+        :Acesso negado;
+    endif
+
+else (Não)
+    :Solicitar geração de token;
+    :Enviar requisição para bot Telegram;
+    :Usuário recebe token;
+
+    :Usuário digita token;
+
+    if (Token válido?) then (Sim)
+        :Verificar permissão de acesso;
+
+        if (Possui permissão?) then (Sim)
+            :Liberar entrada;
+            :Destrancar tranca;
+        else (Não)
+            :Acesso negado;
+        endif
+
+    else (Não)
+        :Token inválido;
+        :Acesso negado;
+    endif
+
+endif
+
+stop
+@enduml

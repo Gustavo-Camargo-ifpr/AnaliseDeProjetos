@@ -1,0 +1,20 @@
+@startuml
+[*] --> Desligado
+
+Desligado --> Carregando : Ligar
+Carregando --> EmLimpeza : Iniciar Limpeza
+
+EmLimpeza --> Pausado : Pausar
+Pausado --> EmLimpeza : Continuar
+
+EmLimpeza --> RetornandoBase : Bateria Baixa
+RetornandoBase --> Carregando : Base Alcançada
+
+EmLimpeza --> Erro : Erro Detectado
+Pausado --> Erro : Erro Detectado
+RetornandoBase --> Erro : Erro Detectado
+
+Erro --> Pausado : Resolver Erro
+
+Carregando --> Desligado : Desligar
+@enduml

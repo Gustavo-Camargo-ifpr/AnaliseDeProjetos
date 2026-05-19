@@ -1,0 +1,11 @@
+@startuml
+[*] --> MenuInicial
+
+MenuInicial --> Jogando : Iniciar Jogo
+Jogando --> Pausado : Pausar
+Pausado --> Jogando : Continuar
+Jogando --> GameOver : Morrer
+Jogando --> Vencido : Vencer
+GameOver --> MenuInicial
+Vencido --> MenuInicial
+@enduml

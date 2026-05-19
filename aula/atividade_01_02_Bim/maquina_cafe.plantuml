@@ -1,0 +1,11 @@
+@startuml
+[*] --> Desligada
+
+Desligada --> Ligada : Ligar
+Ligada --> AguardandoSelecao
+AguardandoSelecao --> PreparandoCafe : Selecionar Café
+PreparandoCafe --> CafePronto : Café Pronto
+CafePronto --> AguardandoSelecao
+Ligada --> Desligada : Desligar
+AguardandoSelecao --> Desligada : Desligar
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+[*] --> Desligado
+
+Desligado --> Aquecendo : Ligar
+Aquecendo --> Mantendo : Temperatura Atingida
+Mantendo --> Resfriando : Resfriar
+Resfriando --> Aquecendo : Ligar
+Aquecendo --> Desligado : Desligar
+Mantendo --> Desligado : Desligar
+Resfriando --> Desligado : Desligar
+@enduml
