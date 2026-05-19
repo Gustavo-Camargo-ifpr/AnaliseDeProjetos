@@ -1,0 +1,14 @@
+@startuml
+[*] --> Parado
+
+Parado --> Reproduzindo : Play
+Reproduzindo --> Pausado : Pause
+Pausado --> Reproduzindo : Play
+Reproduzindo --> Parado : Stop
+Pausado --> Parado : Stop
+
+Reproduzindo --> Buffering : Buffering
+Buffering --> Reproduzindo : Buffering Completo
+
+Parado --> Reproduzindo : Selecionar Música
+@enduml
