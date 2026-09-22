@@ -1,0 +1,19 @@
+@startuml
+
+actor Usuario
+participant MainFactory
+participant PedidoDeliveryFactory
+participant PedidoDelivery
+
+Usuario -> MainFactory : executar()
+
+MainFactory -> PedidoDeliveryFactory : new PedidoDeliveryFactory()
+MainFactory -> PedidoDeliveryFactory : criarPedido()
+
+PedidoDeliveryFactory -> PedidoDelivery : new PedidoDelivery()
+PedidoDeliveryFactory --> MainFactory : pedidoDelivery
+
+MainFactory -> PedidoDelivery : preparar()
+PedidoDelivery --> MainFactory : Pedido preparado
+
+@enduml

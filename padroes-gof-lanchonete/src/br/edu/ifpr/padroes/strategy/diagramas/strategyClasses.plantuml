@@ -1,0 +1,31 @@
+@startuml
+
+interface Desconto {
+    + calcular(valor: double): double
+}
+
+class DescontoEstudante {
+    + calcular(valor: double): double
+}
+
+class DescontoFuncionario {
+    + calcular(valor: double): double
+}
+
+class SemDesconto {
+    + calcular(valor: double): double
+}
+
+class Pedido {
+    - desconto: Desconto
+    + Pedido(desconto: Desconto)
+    + calcularTotal(valor: double): double
+}
+
+Desconto <|.. DescontoEstudante
+Desconto <|.. DescontoFuncionario
+Desconto <|.. SemDesconto
+
+Pedido --> "1" Desconto : utiliza
+
+@enduml

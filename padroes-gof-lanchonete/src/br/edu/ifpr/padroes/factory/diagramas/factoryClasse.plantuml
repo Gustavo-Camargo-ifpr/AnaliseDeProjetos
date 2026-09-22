@@ -1,0 +1,36 @@
+@startuml
+
+interface Pedido {
+    + preparar(): void
+}
+
+class PedidoLocal {
+    + preparar(): void
+}
+
+class PedidoDelivery {
+    + preparar(): void
+}
+
+abstract class PedidoFactory {
+    + criarPedido(): Pedido
+}
+
+class PedidoLocalFactory {
+    + criarPedido(): Pedido
+}
+
+class PedidoDeliveryFactory {
+    + criarPedido(): Pedido
+}
+
+Pedido <|.. PedidoLocal
+Pedido <|.. PedidoDelivery
+
+PedidoFactory <|-- PedidoLocalFactory
+PedidoFactory <|-- PedidoDeliveryFactory
+
+PedidoLocalFactory ..> PedidoLocal : cria
+PedidoDeliveryFactory ..> PedidoDelivery : cria
+
+@enduml

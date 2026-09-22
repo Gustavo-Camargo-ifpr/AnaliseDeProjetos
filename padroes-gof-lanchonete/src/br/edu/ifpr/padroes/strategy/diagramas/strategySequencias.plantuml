@@ -1,0 +1,24 @@
+@startuml
+
+actor Usuario
+participant MainStrategy
+participant Pedido
+participant DescontoEstudante
+
+Usuario -> MainStrategy : executar()
+
+MainStrategy -> DescontoEstudante : new DescontoEstudante()
+
+MainStrategy -> Pedido : new Pedido(desconto)
+
+MainStrategy -> Pedido : calcularTotal(100.00)
+
+Pedido -> DescontoEstudante : calcular(100.00)
+
+DescontoEstudante --> Pedido : 90.00
+
+Pedido --> MainStrategy : 90.00
+
+MainStrategy --> Usuario : Total = R$ 90.00
+
+@enduml

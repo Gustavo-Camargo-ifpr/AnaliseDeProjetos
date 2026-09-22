@@ -1,0 +1,20 @@
+@startuml
+
+actor Usuario
+participant MainAdapter
+participant MercadoPagoAdapter
+participant MercadoPago
+
+Usuario -> MainAdapter : executar()
+
+MainAdapter -> MercadoPago : new MercadoPago()
+MainAdapter -> MercadoPagoAdapter : new MercadoPagoAdapter(mercadoPago)
+
+MainAdapter -> MercadoPagoAdapter : pagar(50.00)
+
+MercadoPagoAdapter -> MercadoPago : realizarPagamento(50.00)
+
+MercadoPago --> MercadoPagoAdapter : pagamento realizado
+MercadoPagoAdapter --> MainAdapter : pagamento concluido
+
+@enduml

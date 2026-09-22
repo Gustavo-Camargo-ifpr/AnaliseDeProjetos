@@ -1,0 +1,21 @@
+@startuml
+
+interface Pagamento {
+    + pagar(valor: double): void
+}
+
+class MercadoPago {
+    + realizarPagamento(valor: double): void
+}
+
+class MercadoPagoAdapter {
+    - mercadoPago: MercadoPago
+    + MercadoPagoAdapter(mercadoPago: MercadoPago)
+    + pagar(valor: double): void
+}
+
+Pagamento <|.. MercadoPagoAdapter
+
+MercadoPagoAdapter --> "1" MercadoPago : adapta
+
+@enduml
