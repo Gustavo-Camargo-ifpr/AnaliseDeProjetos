@@ -1,0 +1,44 @@
+@startuml
+
+class RedeHotel {
+  nome
+}
+
+class Hotel {
+  codigo
+  nome
+}
+
+class Cidade {
+  nome
+  estado
+}
+
+class Quarto {
+  numero
+  tipo
+}
+
+class Hospede {
+  cpf
+  nome
+}
+
+class Reserva {
+  codigo
+  checkIn
+  checkOut
+  qtdPessoas
+}
+
+RedeHotel "1" -- "1..*" Hotel : possui
+
+Cidade "1" -- "0..*" Hotel : localiza
+
+Hotel "1" -- "1..*" Quarto : possui
+
+Hospede "1" -- "0..*" Reserva : realiza
+
+Reserva "1" -- "1..*" Quarto : reserva
+
+@enduml

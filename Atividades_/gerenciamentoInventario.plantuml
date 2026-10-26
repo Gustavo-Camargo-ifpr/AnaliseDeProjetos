@@ -1,0 +1,43 @@
+@startuml
+
+class Categoria {
+  codigo
+  nome
+}
+
+class Produto {
+  codigo
+  descricao
+  preco
+}
+
+class Fornecedor {
+  cnpj
+  nome
+}
+
+class Cliente {
+  cpf
+  nome
+}
+
+class Pedido {
+  numero
+  data
+}
+
+class ItemPedido {
+  quantidade
+}
+
+Categoria "1" -- "0..*" Produto : classifica
+
+Fornecedor "1" -- "0..*" Produto : fornece
+
+Cliente "1" -- "0..*" Pedido : realiza
+
+Pedido "1" *-- "1..*" ItemPedido : possui
+
+Produto "1" -- "0..*" ItemPedido : compoe
+
+@enduml

@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:8081
+
+### 1. Listar sem login (esperado: 401)
+GET {{baseUrl}}/tarefas
+
+### 2. Listar com senha errada (esperado: 401)
+GET {{baseUrl}}/tarefas
+Authorization: Basic dXNlcjplcnJhZGE=
+
+### 3. Listar tarefas como USER (esperado: 200)
+GET {{baseUrl}}/tarefas
+Authorization: Basic dXNlcjoxMjM0
+
+### 4. Cadastrar tarefa como USER
+POST {{baseUrl}}/tarefas
+Authorization: Basic dXNlcjoxMjM0
+Content-Type: application/json
+
+{
+  "titulo": "Estudar Spring Security",
+  "descricao": "Fazer a atividade",
+  "prazo": "2026-10-30"
+}
+
+### 5. Buscar tarefa por ID como USER (troque 1 por um ID existente)
+GET {{baseUrl}}/tarefas/1
+Authorization: Basic dXNlcjoxMjM0
+
+### 6. Excluir como USER (esperado: 403; troque 1 por um ID existente)
+DELETE {{baseUrl}}/tarefas/1
+Authorization: Basic dXNlcjoxMjM0
+
+### 7. Excluir como ADMIN (esperado: 204; troque 1 por um ID existente)
+DELETE {{baseUrl}}/tarefas/1
+Authorization: Basic YWRtaW46YWRtaW4xMjM=

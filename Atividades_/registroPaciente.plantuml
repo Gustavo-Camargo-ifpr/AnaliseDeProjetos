@@ -1,0 +1,42 @@
+@startuml
+
+class Paciente {
+  codigo
+  nome
+}
+
+class Quarto {
+  numero
+}
+
+class Medico {
+  crm
+  nome
+}
+
+class Medicamento {
+  codigo
+  nome
+}
+
+class Prescricao {
+  horario
+  dosagem
+}
+
+class Enfermeira {
+  coren
+  nome
+}
+
+Quarto "1" -- "0..*" Paciente : interna
+
+Medico "1" -- "0..*" Paciente : acompanha
+
+Paciente "1" *-- "0..*" Prescricao : possui
+
+Medicamento "1" -- "0..*" Prescricao : utiliza
+
+Enfermeira "1" -- "0..*" Prescricao : administra
+
+@enduml

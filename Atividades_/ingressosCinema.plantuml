@@ -1,0 +1,50 @@
+@startuml
+
+class Cinema {
+  nome
+}
+
+class Sala {
+  numero
+  capacidade
+}
+
+class Filme {
+  titulo
+  duracao
+}
+
+class Sessao {
+  data
+  horario
+}
+
+class Cliente {
+  cpf
+  nome
+}
+
+class Ingresso {
+  codigo
+  valor
+}
+
+class Cadeira {
+  numero
+}
+
+Cinema "1" -- "1..*" Sala : possui
+
+Sala "1" -- "1..*" Cadeira : possui
+
+Filme "1" -- "0..*" Sessao : exibe
+
+Sala "1" -- "0..*" Sessao : realiza
+
+Cliente "1" -- "0..*" Ingresso : compra
+
+Sessao "1" -- "0..*" Ingresso : gera
+
+Cadeira "1" -- "0..*" Ingresso : ocupa
+
+@enduml

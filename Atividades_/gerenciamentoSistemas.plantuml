@@ -1,0 +1,44 @@
+@startuml
+
+class Curso {
+  codigo
+  nome
+}
+
+class Disciplina {
+  codigo
+  nome
+  cargaHoraria
+}
+
+class Professor {
+  matricula
+  nome
+}
+
+class Academico {
+  matricula
+  nome
+}
+
+class Turma {
+  codigo
+  semestre
+  ano
+}
+
+class Matricula {
+  dataMatricula
+}
+
+Curso "1" -- "1..*" Disciplina : possui
+
+Curso "1" -- "1..*" Turma : possui
+
+Professor "1" -- "0..*" Disciplina : ministra
+
+Academico "1" -- "0..*" Matricula : realiza
+
+Turma "1" -- "0..*" Matricula : contem
+
+@enduml
